@@ -3,12 +3,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-interface MenuComponent { 
+interface ShoppingchartComponent { 
     void print(); 
 } 
  
 // Leaf 
-class MenuItem implements MenuComponent { 
+class MenuItem implements ShoppingchartComponent { 
     private String product; 
     private double productbox; 
      
@@ -30,15 +30,15 @@ class MenuItem implements MenuComponent {
 } 
  
 // Composite 
-class Menu implements MenuComponent { 
+class Menu implements ShoppingchartComponent { 
     private String name; 
-    private List<MenuComponent> menuComponents = new ArrayList<>(); 
+    private List<ShoppingchartComponent> menuComponents = new ArrayList<>(); 
      
     public Menu(String name) { 
         this.name = name; 
     } 
      
-    public void add(MenuComponent menuComponent) { 
+    public void add(ShoppingchartComponent menuComponent) { 
         if (menuComponent != null) {
             menuComponents.add(menuComponent);
         } else {
@@ -46,7 +46,7 @@ class Menu implements MenuComponent {
         }
     } 
 
-    public void remove(MenuComponent menuComponent) {
+    public void remove(ShoppingchartComponent menuComponent) {
         menuComponents.remove(menuComponent);
     }
      
@@ -60,7 +60,7 @@ class Menu implements MenuComponent {
             System.out.print("  "); // Indentation
         }
         System.out.println(name + ":");
-        for (MenuComponent menuComponent : menuComponents) {
+        for (ShoppingchartComponent menuComponent : menuComponents) {
             if (menuComponent instanceof Menu) {
                 ((Menu) menuComponent).print(indent + 1);
             } else {
