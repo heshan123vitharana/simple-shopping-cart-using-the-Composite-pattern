@@ -3,16 +3,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
-interface ShoppingchartComponent { 
+interface chartComponent { 
     void print(); 
 } 
  
 // Leaf 
-class MenuItem implements ShoppingchartComponent { 
+class ChartItem implements chartComponent { 
     private String product; 
     private double productbox; 
      
-    public MenuItem(String product, double productbox) { 
+    public ChartItem(String product, double productbox) { 
         if (product == null || product.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty.");
         }
@@ -30,24 +30,24 @@ class MenuItem implements ShoppingchartComponent {
 } 
  
 // Composite 
-class Menu implements ShoppingchartComponent { 
+class Chart implements chartComponent { 
     private String name; 
-    private List<ShoppingchartComponent> menuComponents = new ArrayList<>(); 
+    private List<chartComponent> chartComponents = new ArrayList<>(); 
      
-    public Menu(String name) { 
+    public Chart(String name) { 
         this.name = name; 
     } 
      
-    public void add(ShoppingchartComponent menuComponent) { 
-        if (menuComponent != null) {
-            menuComponents.add(menuComponent);
+    public void add(chartComponent chartComponent) { 
+        if (chartComponent != null) {
+            chartComponents.add(chartComponent);
         } else {
-            System.out.println("Cannot add null MenuComponent.");
+            System.out.println("Cannot add null chartComponent.");
         }
     } 
 
-    public void remove(ShoppingchartComponent menuComponent) {
-        menuComponents.remove(menuComponent);
+    public void remove(chartComponent chartComponent) {
+        chartComponents.remove(chartComponent);
     }
      
     @Override 
@@ -60,14 +60,14 @@ class Menu implements ShoppingchartComponent {
             System.out.print("  "); // Indentation
         }
         System.out.println(name + ":");
-        for (ShoppingchartComponent menuComponent : menuComponents) {
-            if (menuComponent instanceof Menu) {
-                ((Menu) menuComponent).print(indent + 1);
+        for (chartComponent chartComponent :menuComponents) {
+            if (chartComponent instanceof Chart) {
+                ((Chart) chartComponent).print(indent + 1);
             } else {
                 for (int i = 0; i <= indent; i++) {
                     System.out.print("  "); // Indentation for leaf nodes
                 }
-                menuComponent.print();
+                chartComponent.print();
             }
         }
     }
@@ -77,15 +77,15 @@ class Menu implements ShoppingchartComponent {
 public class CompositeDemo { 
     public static void main(String[] args) { 
         // Create menu items 
-        MenuItem PoloShirtMensM = new MenuItem("PoloShirtMens(M)", 5); 
-        MenuItem DarkBlueMensDenim= new MenuItem("DarkBlueMensDenim", 10); 
-        MenuItem PoloShirtWomensL = new MenuItem("PoloShirtWomens(L)", 7); 
-        MenuItem SkirtsDenim = new MenuItem("SkirtsDenim", 15); 
+        ChartItem PoloShirtMensM = new ChartItem("PoloShirtMens(M)", 5); 
+        ChartItem DarkBlueMensDenim= new ChartItem("DarkBlueMensDenim", 10); 
+        ChartItem PoloShirtWomensL = new ChartItem("PoloShirtWomens(L)", 7); 
+        ChartItem SkirtsDenim = new ChartItem("SkirtsDenim", 15); 
          
         // Create menus 
-        Menu MensMenu = new Menu("Mens"); 
-        Menu WomensMenu = new Menu("Womens"); 
-        Menu mainMenu = new Menu("Clothing"); 
+        Chart MensMenu = new Chart("Mens"); 
+        Chart WomensMenu = new Chart("Womens"); 
+        Chart mainMenu = new Chart("Clothing"); 
          
         // Add items to menus 
         MensMenu.add(PoloShirtMensM); 
