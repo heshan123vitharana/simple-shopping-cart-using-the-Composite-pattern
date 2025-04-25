@@ -1,6 +1,7 @@
 # Simple Shopping Cart using the Composite Pattern
 
-Welcome to the **Simple Shopping Cart** project! This repository demonstrates the implementation of the **Composite Design Pattern** to create a flexible and hierarchical shopping cart system. The project is written in Java and showcases how to manage composite structures like menus and items in a shopping cart.
+Welcome to the **Simple Shopping Cart** project! 
+This repository demonstrates the implementation of the **Composite Design Pattern** to create a flexible and hierarchical shopping cart system. The project is written in Java and showcases how to manage composite structures like menus and items in a shopping cart.
 
 ---
 
